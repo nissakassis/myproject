@@ -1,0 +1,133 @@
+<p>home works!</p>
+
+<h1> Bonjour </h1>
+<p> Il y a {{ etudiants }} élèves. </p>
+<p> Le directeur se nomme : {{dir.prenom}} </p>
+<p> L'utilisateur se nomme : {{user.name}} </p>
+
+<!--En JavaScript on faisait ca 
+    <h1 onclick="alert('coucou');"> Salut </h1> -->
+
+<h1 (click)="afficheMessage('coucou')"> Bonjour </h1>
+
+
+<!-- $event, et aussi event.. dans la méthode POUR QUE
+Quand on clique sur Message enfant alors lui seul apparait et pas le 
+Message Parent aussi.
+Si on n'avait pas mis les event icic et ds la méthode alors
+qd on clique sur Message Enfant, alors les 2 message de enfant et parent
+apparaissent
+-->
+<div (click)="afficheMessage2('Parent', $event)"> Message Parent
+    <br>
+    <span (click)="afficheMessage2('Enfant', $event)"> Message Enfant </span>
+</div>
+
+
+
+<ul *ngIf="8 > 1">
+    <li>C'est Vrai</li>
+    <li>C'est Facile</li>
+    <li> TOUJOURS VRAI</li>
+</ul>
+
+<!-- <template [ngIf]="etudiants > 18">
+    <h2>coucou</h2>
+</template> -->
+
+<ul>
+    <li *ngFor="let valeur of quantites">{{valeur}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let valeur of quantites; let indice=index ">{{indice}} {{valeur}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of users "> <b> {{user.name }} </b> a pour email : <i> {{user.email}} </i>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of users"> <b> {{ user.name + " a pour email : " + user.email }} </b> </li>
+</ul>
+
+
+<!-- Pipe: | json , pour afficher au format json -->
+<ul>
+    <li *ngFor="let user of users ">{{user | json}} </li>
+</ul>
+
+<ul *ngFor="let user of users ">
+    <li> {{user | json}} </li>
+    <li> {{ user.id }} </li>
+    <li> {{ user.name }} </li>
+    <li> {{ user.email }} </li>
+</ul>
+
+<!-- ou div et h1 et h2 -->
+<ol *ngFor="let obj of data ">
+    <li> {{ obj.id }} </li>
+    <li> {{ obj.name }} </li>
+    <li> {{ obj.address | json }} </li>
+    <li> {{obj.address.streetName }} </li>
+    <li> {{obj.address.streetId }} </li>
+    <ul *ngFor="let val of obj.projets ">
+        <li> {{val.libelle}} </li>
+        <li> {{val.description}} </li>
+    </ul>
+</ol>
+
+<h1>OU</h1>
+<br />
+<div *ngFor="let item of data">
+    <h1>{{ item.id }}</h1>
+    <h1>{{ item.name }}</h1>
+    <h2>{{ item.address.streetName }}</h2>
+    <div *ngFor="let i of item.projets">
+        <h1>{{ i.libelle }}</h1>
+        <h2>{{ i.description }}</h2>
+    </div>
+</div>
+<!-- let val of obj.projets, car je veux afficher les valeurs des attributs libelle 
+    et description de l'objet 
+    projets qui est un attributs de data.  -->
+
+<!-- Ces directives s'utiliser avec les composants web :
+    -ng-container
+    -ng-template
+    -->
+<br />
+<ul>
+    <ng-container *ngFor="let user of users">
+        <li *ngIf="user.id! % 2 == 0; then si else sinon">
+            msg non affiche </li>
+        <ng-template #si>
+            <li>{{user.id}} est pair</li>
+        </ng-template>
+        <ng-template #sinon>
+            <li>{{user.id}} est impair</li>
+        </ng-template>
+    </ng-container>
+</ul>
+
+
+<div [ngSwitch]="position">
+    <p *ngSwitchCase="1"> Premier cas </p>
+    <p *ngSwitchCase="2"> Deuxième cas </p>
+    <p *ngSwitchDefault> Pas dans le Premier cas </p>
+</div>
+
+<br>
+
+<div [ngClass]="{'red': true}">
+    div avec des classes dynamiques
+</div>
+
+<div [ngStyle]="{ color: 'red', fontWeight: 'bold' }">Texte en rouge et gras</div>
+
+<ul *ngFor="let user of users">
+    <li [ngClass]="user.id! % 2 == 0 ? 'blue' : 'red' ">
+        {{user.id}}
+    </li>
+</ul>
