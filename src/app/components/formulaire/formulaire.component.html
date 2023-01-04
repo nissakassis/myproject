@@ -1,6 +1,55 @@
-<p>formulaire works!</p>
-<p>JE suis le composant du formulaire</p>
 
 
+<!-- { id: 1, name: 'John', email: "john.wick@gmail.com" }, -->
 
-<p>HELLOOO </p>
+<form name="formuser" (ngSubmit)="ajoutUser()"  (ngReset)="clear()">
+    <label>Id</label>
+    <div>
+        <input name="id"   [(ngModel)]="id">
+    </div>
+    <label>Nom</label>
+    <div>
+        <input type="name" name="name" [(ngModel)]="name">
+    </div>
+    <label>Email</label>
+    <div>
+        <input type="email" name="email" [(ngModel)]="email">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Envoyer </button> 
+    <button type="reset" class="btn btn-primary"> Reset </button>
+</form>
+ 
+<br> <br>
+
+<ol>
+    <ng-container *ngFor="let user of users; let myIndex=index">
+      <li>Numéro user: {{user.id}} </li>
+      <ul>
+        <li> Nom:  {{user.name}} </li>
+        <li> Email:  {{user.email}} </li>
+      </ul>
+     <button  (click)="remove(myIndex)"> Supprimer</button> 
+    </ng-container>
+</ol>
+
+<!-- <ul>
+    <ng-container *ngFor="let user of users">
+      <li> {{user.id}} </li>
+      <li> {{user.name}} </li>
+      <li> {{user.email}} </li>
+    </ng-container>
+</ul> -->
+
+<!-- 
+<form (ngSubmit)="register()">
+    <label>Login</label>
+    <div>
+        <input name="login"  [(ngModel)]="log">
+    </div>
+    <label>Password</label>
+    <div>
+        <input type="password" name="password" [(ngModel)]="pwd">
+    </div>
+    <button type="submit" (click)="ajout">Envoyer</button>
+</form> -->

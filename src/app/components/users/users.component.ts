@@ -16,6 +16,7 @@ export class UsersComponent {
     { id: 4, name: 'Amel', email: "amel@gmail.com" }
   ];
 
+  
   constructor(private router: Router) {}
 
   getUserDetails(userId: number): void {

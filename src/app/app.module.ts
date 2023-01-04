@@ -9,6 +9,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './components/user/user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
+import { EmailValidatorDirective } from './directives/email-validator.directive';
+import { PasswordValidatorDirective } from './directives/password-validator.directive';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NotFoundComponent,
     UsersComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    EmailValidatorDirective,
+    PasswordValidatorDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //Module qui nous permet de faire des formulaires
+    //de type Template-driven-form
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
