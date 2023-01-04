@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../interfaces/user';
+import { Router } from '@angular/router';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-home',
@@ -90,10 +91,14 @@ export class HomeComponent {
     ]
   }]
 
+  //ici on fait l'injection de dependance du service router
+  // router est instance, un objetn de service
+  constructor(private router: Router){}
 
-
-
-
+  //creation d'une méthode goTo qui appelle la methode navigate par l'objet router
+  goTo(): void{
+    this.router.navigate(['/form']);
+  }
 
 
 
