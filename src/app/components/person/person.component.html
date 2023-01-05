@@ -1,0 +1,36 @@
+<form (ngSubmit)="ajoutPerson()"  #monForm=ngForm>
+<div class="form-group">
+    <label for="firstName1">Fisrt Name</label>
+    <input type="text" name="firstName" class="form-control" [(ngModel)]="person.firstName"
+        placeholder="Enter your first name">
+</div>
+
+<div class="form-group">
+    <label for="lastName">Lastt Name</label>
+    <input type="text" name="LastName" class="form-control" [(ngModel)]="person.lastName"
+        placeholder="Enter your Last name">
+</div>
+<div class="form-group">
+    <label for="age">Age</label>
+    <input type="age" name="age" class="form-control" [(ngModel)]="person.age" placeholder="Enter your age">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="container" style="margin-top: 15px;">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of persons">
+            <span>{{item.firstName}} {{item.lastName}} {{item.age}}</span>
+            <button (click)="personbyId(item.id!)"> Afficher </button>
+            <button (click)="persdeleteById(item.id!)" > Supprimer </button>
+        </li>
+    </ul>
+</div>
+
+<br> <br>
+<form class="form-group"  (ngSubmit)="personbyId(person.id!)">
+    <label for="byId">Rentrez un id pour chercher une personne</label>
+    <input type="id" name="byId" class="form-control" [(ngModel)]="person.id" placeholder="Enter your age">
+    <button type="submit"  class="btn btn-primary">Submit</button>
+</form>
+<div> {{person.lastName}} {{person.firstName}} {{person.age}}  </div>
